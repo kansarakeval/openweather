@@ -1,6 +1,6 @@
 class OpenWeatherModel {
-  String? base, name, cod;
-  int? visibility, dt, timezone, id;
+  String? base, name;
+  int? visibility, dt, timezone, id,cod;
   CoordModel? coordModel;
   MainModel? mainModel;
   WindModel? windModel;
@@ -73,35 +73,36 @@ class CoordModel {
 }
 
 class MainModel {
-  double? temp, feelsLike, tempMin, tempMax;
-  int? pressure, humidity, seaLevel, groundLevel;
+  double? temp, feels_like, temp_min, temp_max;
+  int? pressure, humidity, sea_level, grnd_level;
 
   MainModel(
       {this.temp,
-        this.feelsLike,
-        this.tempMin,
-        this.tempMax,
+        this.feels_like,
+        this.temp_min,
+        this.temp_max,
         this.pressure,
         this.humidity,
-        this.seaLevel,
-        this.groundLevel});
+        this.sea_level,
+        this.grnd_level});
 
   factory MainModel.mapToModel(Map m1) {
     return MainModel(
       temp: m1['temp'],
-      feelsLike: m1['feels_like'],
-      tempMin: m1['temp_min'],
-      tempMax: m1['temp_max'],
+      feels_like: m1['feels_like'],
+      temp_min: m1['temp_min'],
+      temp_max: m1['temp_max'],
       pressure: m1['pressure'],
       humidity: m1['humidity'],
-      seaLevel: m1['sea_level'],
-      groundLevel: m1['grnd_level'],
+      sea_level: m1['sea_level'],
+      grnd_level: m1['grnd_level'],
     );
   }
 }
 
 class WindModel {
-  int? speed, deg, gust;
+  double? speed,gust;
+  int?  deg;
 
   WindModel({this.speed, this.deg, this.gust});
 
@@ -140,3 +141,4 @@ class SysModel {
     );
   }
 }
+
